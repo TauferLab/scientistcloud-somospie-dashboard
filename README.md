@@ -20,6 +20,12 @@ pip install -r requirements.txt
 
 If you must use pip-only installation, install a GDAL wheel compatible with your system before running the notebook. GDAL installed only through pip can be fragile because it depends on native GDAL libraries.
 
+If you installed the requirements before `param==2.0.2` was pinned, refresh the environment with:
+
+```bash
+pip install --upgrade --force-reinstall -r requirements.txt
+```
+
 To use the environment in Jupyter:
 
 ```bash
@@ -48,7 +54,7 @@ launch_dashboard()
 After the dashboard starts, open:
 
 ```text
-http://localhost:8989/dashboards
+http://localhost:8989/dashboard
 ```
 
 Use `localhost`, not `0.0.0.0`, in your browser.
@@ -76,6 +82,20 @@ The `10m` files can be many gigabytes per field. Make sure you have enough disk 
 - `local_or_download`: reuse local TIFFs when present, otherwise download them.
 - `download`: download configured TIFFs even if local files already exist.
 - `local`: require TIFFs to already exist locally.
+
+## Recommended Dashboard Ranges
+
+If the dashboard only shows the silhouette of the state, the color range is probably including the NoData value `-999999`. Change `Range` from `dynamic` to a manual/user range and use these starting values:
+
+| Field | Min | Max |
+| --- | ---: | ---: |
+| `elevation` | `0` | `2000` |
+| `hillshade` | `0` | `255` |
+| `aspect` | `0` | `360` |
+| `slope` | `0` | `70` |
+| `plan_curvature` | `-0.05` | `0.05` |
+
+For terrain interpretation, `hillshade` and `slope` usually show spatial structure most clearly at first glance. For `elevation`, keep `Mapper` as `linear` and use a palette such as `Viridis256`, `Turbo256`, or `Inferno256`.
 
 ## Troubleshooting
 
