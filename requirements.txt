@@ -1,0 +1,10 @@
+numpy<2
+requests
+tqdm
+matplotlib
+panel==1.3.8
+bokeh==3.3.4
+ipywidgets==8.1.2
+ipywidgets-bokeh==1.5.0
+OpenVisusNoGui==2.2.149
+openvisuspy==1.0.71

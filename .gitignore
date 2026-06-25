@@ -1,0 +1,15 @@
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Downloaded TIFFs, generated IDX datasets, and dashboard logs can be large.
+data/
+logs/
+
+# Local environments.
+.venv/
+venv/
+env/
+
+# OS/editor files.
+.DS_Store
